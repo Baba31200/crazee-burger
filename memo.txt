@@ -1,0 +1,54 @@
+FO1
+function App() {
+  //state,data, données
+  
+
+  //comportement
+
+  
+
+  
+  //affichage(render)
+  return (
+    <div>
+      <h1>Bienvenu chez nous !</h1>
+      <br />
+      <br />
+      <h3>Connectez-vous</h3>
+    </div>
+  );
+}
+
+export default App;
+
+function Form() {
+  //state
+  const [info, setInfo] = useState("");
+
+  //Comportement
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setInfo("");
+    alert(`bonjour, ${info}`);
+  };
+
+  const handleChange = (event) => {
+    // console.log(event.target.value);
+    setInfo(event.target.value);
+  };
+  //affichage
+  return (
+    <form action="" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Entrez votre prénom.."
+        value={info}
+        onChange={handleChange}
+        required
+      />
+      <button>Accédez à votre espace</button>
+    </form>
+  );
+}
+
+export default Form;
