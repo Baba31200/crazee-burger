@@ -1,4 +1,4 @@
-import LoginPage from "./components/pages/LoginPage";
+import LoginPage from "./components/pages/Login/LoginPage";
 
 function App() {
   //state,data, données
@@ -6,11 +6,7 @@ function App() {
   //comportement
 
   //affichage(render)
-  return (
-    <div>
-      <LoginPage />
-    </div>
-  );
+  return <LoginPage />;
 }
 
 export default App;
