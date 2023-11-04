@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function LoginForm() {
   //state
@@ -28,6 +29,7 @@ function LoginForm() {
         onChange={handleChange}
       />
       <button>Accédez à votre espace</button>
+      <Link to="/order">Vers OrderPage</Link>
     </form>
   );
 }
