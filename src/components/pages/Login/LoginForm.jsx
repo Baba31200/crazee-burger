@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { IoChevronForwardOutline } from "react-icons/io5";
-import TextInput from "./TextInput";
+import TextInput from "../../reusable-ui/TextInput";
 import { BsPersonCircle } from "react-icons/bs";
+import PrimaryButton from "../../reusable-ui/PrimaryButton";
 
 function LoginForm() {
   //state
@@ -39,10 +40,10 @@ function LoginForm() {
           required
           Icon={<BsPersonCircle className="icon" />}
         />
-        <button className="button-with-icon">
-          <span>Accéder à mon espace</span>
-          <IoChevronForwardOutline className="icon" />
-        </button>
+        <PrimaryButton
+          label="Accéder à mon espace"
+          Icon={<IoChevronForwardOutline className="icon" />}
+        />
       </div>
     </LoginFormSyled>
   );
@@ -143,6 +144,14 @@ const LoginFormSyled = styled.form`
       font-size: 15px;
       margin-left: 10px;
     }
+  }
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    margin-left: 10px;
   }
 `;
 export default LoginForm;
