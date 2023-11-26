@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function Input({ value, onChange, Icon, ...extraProps }) {
+function TextInput({ value, onChange, Icon, ...extraProps }) {
   return (
     <InputStyled>
       {Icon && Icon}
@@ -9,7 +9,7 @@ function Input({ value, onChange, Icon, ...extraProps }) {
   );
 }
 
-export default Input;
+export default TextInput;
 
 const InputStyled = styled.div`
   background-color: #fff;
