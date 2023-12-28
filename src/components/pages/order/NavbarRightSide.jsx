@@ -1,16 +1,11 @@
 import styled from "styled-components";
-
-import { Link } from "react-router-dom";
+import Profile from "./Profile";
 
 function NavbarRightSide({ username }) {
   return (
     <NavbarRightSideStyled>
-      right-side
-      <h1>Bonjour {username}</h1>
-      <br />
-      <Link to="/">
-        <button>Déconnexion</button>
-      </Link>
+      <div className="admin-button">button Admin</div>
+      <Profile />
     </NavbarRightSideStyled>
   );
 }
@@ -18,5 +13,15 @@ function NavbarRightSide({ username }) {
 export default NavbarRightSide;
 
 const NavbarRightSideStyled = styled.div`
-  background: purple;
+  display: flex;
+  align-items: center;
+  padding-right: 50px;
+
+  /* .admin-button {
+    background: yellow;
+  } */
+
+  .profile {
+    background: #2bcde2;
+  }
 `;
