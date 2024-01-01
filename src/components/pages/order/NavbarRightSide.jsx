@@ -4,8 +4,8 @@ import Profile from "./Profile";
 function NavbarRightSide({ username }) {
   return (
     <NavbarRightSideStyled>
-      <div className="admin-button">button Admin</div>
-      <Profile />
+      {/* <div className="admin-button">button Admin</div> */}
+      <Profile username={username} />
     </NavbarRightSideStyled>
   );
 }
@@ -22,6 +22,6 @@ const NavbarRightSideStyled = styled.div`
   } */
 
   .profile {
-    background: #2bcde2;
+    background: yellow;
   }
 `;
