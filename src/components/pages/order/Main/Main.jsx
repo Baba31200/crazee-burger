@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
+import Menu from "./Menu";
 
 function Main() {
   return (
     <MainStyled>
       <div className="basket">Basket</div>
-      <div className="menu">Menu</div>
+      <Menu />
     </MainStyled>
   );
 }
