@@ -6,6 +6,7 @@ function Main() {
   return (
     <MainStyled>
       {/* <div className="basket">Basket</div> */}
+
       <Menu />
     </MainStyled>
   );
@@ -24,11 +25,8 @@ const MainStyled = styled.div`
   display: grid;
 
   grid-template-columns: 1fr;
+  overflow-y: scroll;
   /* .basket {
     background: pink;
   } */
-
-  .menu {
-    background: purple;
-  }
 `;
