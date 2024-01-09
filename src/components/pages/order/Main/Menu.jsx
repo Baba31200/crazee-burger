@@ -33,26 +33,5 @@ const MenuStyled = styled.div`
   padding: 50px 50px 150px;
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-
-  .produit {
-    background: red;
-    width: 240px;
-    height: 330px;
-
-    .image {
-      border: 1px solid fuchsia;
-      width: 100px;
-      height: auto;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-    .description {
-      border: 1px solid fuchsia;
-    }
-  }
 `;
 export default Menu;
