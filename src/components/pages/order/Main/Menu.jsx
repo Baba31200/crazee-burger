@@ -13,9 +13,10 @@ function Menu() {
       {menu.map((produit) => {
         return (
           <Product
-            title={produit.title}
-            imageSource={produit.imageSource}
-            price={produit.price}
+            {...produit}
+            // title={produit.title}
+            // imageSource={produit.imageSource}
+            // price={produit.price}
           />
           //
         );
