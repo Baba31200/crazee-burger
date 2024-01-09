@@ -37,7 +37,7 @@ const ProductStyled = styled.div`
       object-fit: contain;
     }
   }
-  .description {
+  .info-text {
     border: 1px solid blue;
   }
 `;
