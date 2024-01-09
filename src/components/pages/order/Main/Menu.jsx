@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
 
 import { theme } from "../../../../theme";
+import Product from "./Product";
 
 function Menu() {
   const [menu, setMemu] = useState(fakeMenu2);
@@ -11,18 +12,12 @@ function Menu() {
     <MenuStyled>
       {menu.map((produit) => {
         return (
-          <div className="produit">
-            <div className="image">
-              <img src={produit.imageSource} alt={produit.title} />
-            </div>
-            <div className="info-text">
-              <div className="title">{produit.title}</div>
-              <div className="description">
-                <div className="price">{produit.price}</div>
-                <button className="add-button">Ajouter</button>
-              </div>
-            </div>
-          </div>
+          <Product
+            title={produit.title}
+            imageSource={produit.imageSource}
+            price={produit.price}
+          />
+          //
         );
       })}
     </MenuStyled>
@@ -51,7 +46,11 @@ const MenuStyled = styled.div`
       img {
         width: 100%;
         height: 100%;
+        object-fit: cover;
       }
+    }
+    .description {
+      border: 1px solid fuchsia;
     }
   }
 `;
