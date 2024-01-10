@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import Profile from "./Profile";
+import ToggleButton from "../../../reusable-ui/ToggleButton";
 
 function NavbarRightSide({ username }) {
   return (
     <NavbarRightSideStyled>
-      {/* <div className="admin-button">button Admin</div> */}
+      <ToggleButton
+        labelIfUnchecked="ACTIVER LE MODE ADMIN"
+        labelIfChecked="DÉSACTIVER LE MODE ADMIN"
+      />
       <Profile username={username} />
     </NavbarRightSideStyled>
   );
