@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-function Tab({ Icon }) {
+function Tab({ Icon, onClick, className }) {
   return (
-    <TabStyled>
+    <TabStyled onClick={onClick} className={className}>
       <div className="icon">{Icon}</div>
     </TabStyled>
   );
@@ -40,7 +40,7 @@ const TabStyled = styled.button`
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 0px;
 
-  :hover {
+  &:hover {
     border-bottom: 2px solid ${theme.colors.white};
   }
 
