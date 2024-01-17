@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme";
 
 function AdminPanel() {
-  return <AdminPanelStyled>Admin panel</AdminPanelStyled>;
+  return <AdminPanelStyled></AdminPanelStyled>;
 }
 
 const AdminPanelStyled = styled.div`
