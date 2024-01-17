@@ -1,21 +1,22 @@
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
+
+import AdminTabs from "./AdminTabs";
+import AdminPanel from "./AdminPanel";
 
 function Admin() {
-  return <AdminStyled>Admin</AdminStyled>;
+  return (
+    <AdminStyled>
+      <AdminTabs />
+      <AdminPanel />
+    </AdminStyled>
+  );
 }
 
 export default Admin;
 
 const AdminStyled = styled.div`
-  background: red;
-  height: 250px;
   position: absolute;
   left: 0px;
   right: 0px;
   bottom: 0px;
-
-  background: ${theme.colors.white};
-  border: 1px solid ${theme.colors.greyLight};
-  box-shadow: ${theme.shadows.subtle};
 `;
