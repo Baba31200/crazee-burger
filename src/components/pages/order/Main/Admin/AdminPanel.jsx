@@ -7,17 +7,12 @@ import { getTabSelected, tabsConfig } from "./tabsConfig";
 export default function AdminPanel() {
   const { currentTabSelected } = useContext(OrderContext);
 
-  // 1. récupérer la liste de tous les tabs
   const tabs = tabsConfig;
-
-  // 2. sélectionner le tab qui m'intéresse
   const tabSelected = getTabSelected(tabs, currentTabSelected);
-
-  // 3. afficher le label du tab qui m'intéresse
 
   return (
     <AdminPanelStyled>
-      <p>{tabSelected.label}</p>
+      <p>{tabSelected && tabSelected.label}</p>
     </AdminPanelStyled>
   );
 }
