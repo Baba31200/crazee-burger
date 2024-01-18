@@ -6,10 +6,14 @@ import { MdModeEditOutline } from "react-icons/md";
 import { theme } from "../../../../../theme";
 import { useState } from "react";
 
-export default function AdminTabs({ isCollapsed, setIsCollapsed }) {
-  const [isAddSelected, setIsAddSelected] = useState(true);
-  const [isEditSelected, setIsEditSelected] = useState(false);
-
+export default function AdminTabs({
+  isCollapsed,
+  setIsCollapsed,
+  isAddSelected,
+  setIsAddSelected,
+  isEditSelected,
+  setIsEditSelected,
+}) {
   const handleClick = () => {
     setIsCollapsed(!isCollapsed);
   };
