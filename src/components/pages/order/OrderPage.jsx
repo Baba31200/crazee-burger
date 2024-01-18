@@ -1,20 +1,28 @@
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import styled from "styled-components";
+import { theme } from "../../../theme";
 import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
-import { theme } from "../../../theme";
-import { useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 
-function OrderPage() {
-  //state
+export default function OrderPage() {
+  // state
   const [isModeAdmin, setIsModeAdmin] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isAddSelected, setIsAddSelected] = useState(true);
+  const [isEditSelected, setIsEditSelected] = useState(false);
 
-  //comportement
+  // comportements
 
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
+    isCollapsed,
+    setIsCollapsed,
+    isAddSelected,
+    setIsAddSelected,
+    isEditSelected,
+    setIsEditSelected,
   };
 
   //affichage
@@ -29,8 +37,6 @@ function OrderPage() {
     </OrderContext.Provider>
   );
 }
-
-export default OrderPage;
 
 const OrderPageStyled = styled.div`
   background: ${theme.colors.primary};

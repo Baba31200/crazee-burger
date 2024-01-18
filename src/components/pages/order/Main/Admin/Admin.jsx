@@ -1,32 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import OrderContext from "../../../../../context/OrderContext";
 import AdminPanel from "./AdminPanel";
 import AdminTabs from "./AdminTabs";
 
-export default function Admin({
-  isCollapsed,
-  setIsCollapsed,
-  isAddSelected,
-  setIsAddSelected,
-  isEditSelected,
-  setIsEditSelected,
-}) {
+export default function Admin() {
+  const { isCollapsed } = useContext(OrderContext);
+
   return (
     <AdminStyled>
-      <AdminTabs
-        isCollapsed={isCollapsed}
-        setIsCollapsed={setIsCollapsed}
-        isAddSelected={isAddSelected}
-        setIsAddSelected={setIsAddSelected}
-        isEditSelected={isEditSelected}
-        setIsEditSelected={setIsEditSelected}
-      />
-      {!isCollapsed && (
-        <AdminPanel
-          isAddSelected={isAddSelected}
-          isEditSelected={isEditSelected}
-        />
-      )}
+      <AdminTabs />
+      {!isCollapsed && <AdminPanel />}
     </AdminStyled>
   );
 }
