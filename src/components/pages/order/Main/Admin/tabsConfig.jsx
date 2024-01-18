@@ -25,3 +25,7 @@ export const tabsConfig = [
     Icon: <BsFillSunFill />,
   },
 ];
+
+export const getTabSelected = (tabs, currentTabSelected) => {
+  return tabs.find((tab) => tab.index === currentTabSelected);
+};
