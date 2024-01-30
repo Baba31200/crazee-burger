@@ -1,27 +1,39 @@
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import styled from "styled-components";
+import { theme } from "../../../theme";
 import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
-import { theme } from "../../../theme";
+import OrderContext from "../../../context/OrderContext";
 
-function OrderPage() {
-  //state
-  const { username } = useParams();
+export default function OrderPage() {
+  // state
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [currentTabSelected, setCurrentTabSelected] = useState("add");
 
-  //comportement
+  // comportements
+
+  const orderContextValue = {
+    isModeAdmin,
+    setIsModeAdmin,
+    isCollapsed,
+    setIsCollapsed,
+    currentTabSelected,
+    setCurrentTabSelected,
+  };
 
   //affichage
   return (
-    <OrderPageStyled>
-      <div className="container">
-        <Navbar username={username} />
-        <Main />
-      </div>
-    </OrderPageStyled>
+    <OrderContext.Provider value={orderContextValue}>
+      <OrderPageStyled>
+        <div className="container">
+          <Navbar />
+          <Main />
+        </div>
+      </OrderPageStyled>
+    </OrderContext.Provider>
   );
 }
-
-export default OrderPage;
 
 const OrderPageStyled = styled.div`
   background: ${theme.colors.primary};
