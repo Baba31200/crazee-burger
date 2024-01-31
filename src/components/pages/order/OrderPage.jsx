@@ -4,14 +4,36 @@ import { theme } from "../../../theme";
 import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
 import OrderContext from "../../../context/OrderContext";
+import { fakeMenu } from "../../../fakeData/fakeMenu";
 
 export default function OrderPage() {
   // state
   const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
+  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
 
+  // const newProduct = {
+  //   id: new Date().getTime(),
+  //   title: "Nouveau produit",
+  //   imageSource:
+  //     "https://www.shutterstock.com/image-photo/classic-hamburger-stock-photo-isolated-600nw-2282033179.jpg",
+  //   price: 2.5,
+  // };
   // comportements
+
+  const handleAdd = (newProduct) => {
+    //1. copie du tableau
+
+    const meuCopy = [...menu];
+
+    //2.  manip de la copie du menu
+
+    const menuUpdated = [newProduct, ...meuCopy];
+
+    //3. update du state
+    setMenu(menuUpdated);
+  };
 
   const orderContextValue = {
     isModeAdmin,
@@ -20,6 +42,9 @@ export default function OrderPage() {
     setIsCollapsed,
     currentTabSelected,
     setCurrentTabSelected,
+    menu,
+    setMenu,
+    handleAdd,
   };
 
   //affichage
