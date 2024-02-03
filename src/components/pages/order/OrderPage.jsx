@@ -13,13 +13,6 @@ export default function OrderPage() {
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [menu, setMenu] = useState(fakeMenu.MEDIUM);
 
-  // const newProduct = {
-  //   id: new Date().getTime(),
-  //   title: "Nouveau produit",
-  //   imageSource:
-  //     "https://www.shutterstock.com/image-photo/classic-hamburger-stock-photo-isolated-600nw-2282033179.jpg",
-  //   price: 2.5,
-  // };
   // comportements
 
   const handleAdd = (newProduct) => {
@@ -43,7 +36,6 @@ export default function OrderPage() {
     currentTabSelected,
     setCurrentTabSelected,
     menu,
-    setMenu,
     handleAdd,
   };
 
