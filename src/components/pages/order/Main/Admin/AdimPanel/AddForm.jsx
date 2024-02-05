@@ -26,6 +26,7 @@ function AddForm() {
     };
 
     handleAdd(newProductToAdd);
+    setNewproduct(EMPTY_PRODUCT);
   };
 
   const handleChange = (event) => {
