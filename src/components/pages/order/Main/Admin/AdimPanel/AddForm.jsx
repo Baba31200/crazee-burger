@@ -4,39 +4,37 @@ import OrderContext from "../../../../../../context/OrderContext";
 
 function AddForm() {
   //State
+
+  const EMPTY_PRODUCT = {
+    id: "",
+    title: "",
+    imageSource: "",
+    price: 12,
+  };
   const { handleAdd } = useContext(OrderContext);
 
-  const [title, setTitle] = useState("");
-  const [imageSource, setImageSource] = useState("");
-  const [price, setPrice] = useState(0);
+  const [newProduct, setNewproduct] = useState(EMPTY_PRODUCT);
 
   //Comportement
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    //copie new fruit ={id, fruit}
-
-    const newProduct = {
+    const newProductToAdd = {
       id: new Date().getTime(),
-      title: title,
-      imageSource: imageSource,
-      price: price,
+
+      ...newProduct,
     };
 
-    handleAdd(newProduct);
+    handleAdd(newProductToAdd);
   };
 
-  const handleTitleChange = (event) => {
-    setTitle(event.target.value);
-  };
+  const handleChange = (event) => {
+    const newValue = event.target.value;
 
-  const handleImageChange = (event) => {
-    setImageSource(event.target.value);
-  };
+    const name = event.target.name;
 
-  const handlePriceChange = (event) => {
-    setPrice(event.target.value);
+    setNewproduct({ ...newProduct, [name]: newValue });
   };
 
   //Affichage
@@ -45,22 +43,25 @@ function AddForm() {
       <div className="image-preview">Aucune Image</div>
       <div className="input-fields">
         <input
+          name="title"
+          value={newProduct.title}
           type="text"
           placeholder="Nom"
-          value={title}
-          onChange={handleTitleChange}
+          onChange={handleChange}
         />
         <input
+          name="imageSource"
+          value={newProduct.imageSource}
           type="text"
           placeholder="Image URl"
-          value={imageSource}
-          onChange={handleImageChange}
+          onChange={handleChange}
         />
         <input
+          name="price"
+          value={newProduct.price ? newProduct.price : ""}
           type="text"
           placeholder="Price"
-          value={price ? price : ""}
-          onChange={handlePriceChange}
+          onChange={handleChange}
         />
       </div>
 
