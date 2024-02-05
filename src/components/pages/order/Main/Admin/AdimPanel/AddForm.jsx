@@ -9,7 +9,7 @@ function AddForm() {
     id: "",
     title: "",
     imageSource: "",
-    price: 12,
+    price: 0,
   };
   const { handleAdd } = useContext(OrderContext);
 
