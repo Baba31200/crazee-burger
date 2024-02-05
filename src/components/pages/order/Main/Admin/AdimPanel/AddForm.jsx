@@ -1,29 +1,67 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
 
 function AddForm() {
+  //State
   const { handleAdd } = useContext(OrderContext);
 
-  const newProduct = {
-    id: new Date().getTime(),
-    title: "Nouveau produit",
-    imageSource:
-      "https://www.shutterstock.com/image-photo/classic-hamburger-stock-photo-isolated-600nw-2282033179.jpg",
-    price: 2.5,
-  };
+  const [title, setTitle] = useState("");
+  const [imageSource, setImageSource] = useState("");
+  const [price, setPrice] = useState(0);
+
+  //Comportement
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    //copie new fruit ={id, fruit}
+
+    const newProduct = {
+      id: new Date().getTime(),
+      title: title,
+      imageSource: imageSource,
+      price: price,
+    };
+
     handleAdd(newProduct);
   };
+
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  };
+
+  const handleImageChange = (event) => {
+    setImageSource(event.target.value);
+  };
+
+  const handlePriceChange = (event) => {
+    setPrice(event.target.value);
+  };
+
+  //Affichage
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-      <div className="image-preview">ImagePreview</div>
+      <div className="image-preview">Aucune Image</div>
       <div className="input-fields">
-        <input type="text" placeholder="Nom" />
-        <input type="text" placeholder="Image URl" />
-        <input type="text" placeholder="Price" />
+        <input
+          type="text"
+          placeholder="Nom"
+          value={title}
+          onChange={handleTitleChange}
+        />
+        <input
+          type="text"
+          placeholder="Image URl"
+          value={imageSource}
+          onChange={handleImageChange}
+        />
+        <input
+          type="text"
+          placeholder="Price"
+          value={price ? price : ""}
+          onChange={handlePriceChange}
+        />
       </div>
 
       <button className="submit-button">Submit button</button>
