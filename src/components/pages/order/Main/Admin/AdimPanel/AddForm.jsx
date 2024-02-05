@@ -21,20 +21,17 @@ function AddForm() {
     event.preventDefault();
 
     const newProductToAdd = {
-      id: new Date().getTime(),
-
       ...newProduct,
+      id: crypto.randomUUID(),
     };
 
     handleAdd(newProductToAdd);
   };
 
   const handleChange = (event) => {
-    const newValue = event.target.value;
+    const { name, value } = event.target;
 
-    const name = event.target.name;
-
-    setNewproduct({ ...newProduct, [name]: newValue });
+    setNewproduct({ ...newProduct, [name]: value });
   };
 
   //Affichage
