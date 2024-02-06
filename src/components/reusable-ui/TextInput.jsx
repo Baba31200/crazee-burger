@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-function TextInput({ value, onChange, Icon, ...extraProps }) {
+function TextInput({ value, onChange, Icon, className, ...extraProps }) {
   return (
-    <InputStyled>
-      {Icon && Icon}
+    <InputStyled className="className">
+      <div className="icon">{Icon && Icon}</div>
       <input value={value} onChange={onChange} type="text" {...extraProps} />
     </InputStyled>
   );
@@ -21,8 +21,12 @@ const InputStyled = styled.div`
   margin: 18px 0;
 
   .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: ${theme.fonts.size.SM};
     margin-right: 8px;
+    margin-left: 10px;
     color: ${theme.colors.greySemiDark};
   }
 

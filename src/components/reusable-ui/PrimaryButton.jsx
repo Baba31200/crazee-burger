@@ -5,7 +5,7 @@ function PrimaryButton({ label, Icon }) {
     <PrimaryButtonStyled>
       <span>{label}</span>
 
-      {Icon && Icon}
+      <div className="icon">{Icon && Icon}</div>
     </PrimaryButtonStyled>
   );
 }
@@ -46,5 +46,11 @@ const PrimaryButtonStyled = styled.button`
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
