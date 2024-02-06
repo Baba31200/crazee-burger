@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import { theme } from "../../../../theme";
-import { formatPrice } from "../../../../utils/maths";
-import Card from "../../../reusable-ui/Card";
+import { theme } from "../../../../../theme";
+import { formatPrice } from "../../../../../utils/maths";
+import Card from "../../../../reusable-ui/Card";
 import { useContext } from "react";
-import OrderContext from "../../../../context/OrderContext";
+import OrderContext from "../../../../../context/OrderContext";
+import EmptyMenuAdmin from "./EmptyMenuAdmin";
+import EmptyMenuClient from "./EmptyMenuClient";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 export default function Menu() {
@@ -15,13 +17,10 @@ export default function Menu() {
 
   //Affichage
 
-  if (menu.length === 0)
-    return (
-      <div>
-        <span>pas de produit</span>
-        <button onClick={resetMenu}>Générer de nouveaux produit</button>
-      </div>
-    );
+  if (menu.length === 0) {
+    if (!isModeAdmin) return <EmptyMenuClient />;
+    return <EmptyMenuAdmin onReset={resetMenu} />;
+  }
 
   return (
     <MenuStyled className="menu">
