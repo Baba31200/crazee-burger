@@ -9,10 +9,19 @@ const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 export default function Menu() {
   // const [menu, setMenu] = useState(fakeMenu.MEDIUM);
 
-  const { menu, isModeAdmin, handleDelete } = useContext(OrderContext);
+  const { menu, isModeAdmin, handleDelete, resetMenu } =
+    useContext(OrderContext);
   //comportement
 
   //Affichage
+
+  if (menu.length === 0)
+    return (
+      <div>
+        <span>pas de produit</span>
+        <button onClick={resetMenu}>Générer de nouveaux produit</button>
+      </div>
+    );
 
   return (
     <MenuStyled className="menu">
