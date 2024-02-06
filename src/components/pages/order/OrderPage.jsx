@@ -28,6 +28,21 @@ export default function OrderPage() {
     setMenu(menuUpdated);
   };
 
+  const handleDelete = (idOfProductToDelete) => {
+    //copie du state
+    const menuCopy = [...menu];
+
+    //manipulation du copie du state
+
+    const menuUpdated = menuCopy.filter(
+      (product) => product.id !== idOfProductToDelete
+    );
+
+    //update du state
+
+    setMenu(menuUpdated);
+  };
+
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -37,6 +52,7 @@ export default function OrderPage() {
     setCurrentTabSelected,
     menu,
     handleAdd,
+    handleDelete,
   };
 
   //affichage
