@@ -41,6 +41,7 @@ function LoginForm() {
           required
           Icon={<BsPersonCircle />}
           className="input-login"
+          version="normal"
         />
         <PrimaryButton
           label="Accéder à mon espace"
