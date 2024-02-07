@@ -13,8 +13,8 @@ function Button({ label, Icon, className, version = "normal" }) {
 
 export default Button;
 const ButtonStyled = styled.button`
-  ${(props) => props.version === "normal" && extraStylePrimary}
-  ${(props) => props.version === "success" && extraStyleSuccess}
+  /* ${(props) => props.version === "normal" && extraStylePrimary}
+  ${(props) => props.version === "success" && extraStyleSuccess} */
 
   ${({ version }) => extraStyle[version]}
 `;
@@ -85,6 +85,6 @@ const extraStyleSuccess = css`
 `;
 
 const extraStyle = {
-  primary: extraStylePrimary,
+  normal: extraStylePrimary,
   success: extraStyleSuccess,
 };
