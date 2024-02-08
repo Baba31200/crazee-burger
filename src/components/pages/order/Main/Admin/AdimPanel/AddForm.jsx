@@ -4,12 +4,10 @@ import OrderContext from "../../../../../../context/OrderContext";
 
 import TextInput from "../../../../../reusable-ui/TextInput";
 
-import { FaHamburger } from "react-icons/fa";
-import { BsFillCameraFill } from "react-icons/bs";
-import { MdOutlineEuro } from "react-icons/md";
 import Button from "../../../../../reusable-ui/Button";
 import ImagePreview from "./ImagePreview";
 import SubmitMessage from "./SubmitMessage";
+import { getInputTextsConfig } from "./inputTextsConfig";
 
 export const EMPTY_PRODUCT = {
   id: "",
@@ -56,6 +54,38 @@ function AddForm() {
       setIsSubmitted(false);
     }, 2000);
   };
+
+  const inputTexts = getInputTextsConfig(newProduct);
+  // const inputTexts = [
+  //   {
+  //     id: "0",
+  //     name: "title",
+  //     value: newProduct.title,
+  //     type: "text",
+  //     placeholder: "Nom du produit (ex: super burger)",
+  //     Icon: <FaHamburger />,
+  //     version: "minimalist",
+  //   },
+  //   {
+  //     id: "1",
+  //     name: "imageSource",
+  //     value: newProduct.imageSource,
+  //     type: "text",
+  //     placeholder:
+  //       "Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)",
+  //     Icon: <BsFillCameraFill />,
+  //     version: "minimalist",
+  //   },
+  //   {
+  //     id: "2",
+  //     name: "price",
+  //     value: newProduct.price ? newProduct.price : "",
+  //     type: "text",
+  //     placeholder: "Prix",
+  //     Icon: <MdOutlineEuro />,
+  //     version: "minimalist",
+  //   },
+  // ];
   //Affichage
   return (
     <AddFormStyled onSubmit={handleSubmit}>
@@ -64,33 +94,19 @@ function AddForm() {
         title={newProduct.title}
       />
       <div className="input-fields">
-        <TextInput
-          name="title"
-          value={newProduct.title}
-          type="text"
-          placeholder="Nom"
-          onChange={handleChange}
-          Icon={<FaHamburger />}
-          version="minimalist"
-        />
-        <TextInput
-          name="imageSource"
-          value={newProduct.imageSource}
-          type="text"
-          placeholder="Image URl"
-          onChange={handleChange}
-          Icon={<BsFillCameraFill />}
-          version="minimalist"
-        />
-        <TextInput
-          name="price"
-          value={newProduct.price ? newProduct.price : ""}
-          type="text"
-          placeholder="Price"
-          onChange={handleChange}
-          Icon={<MdOutlineEuro />}
-          version="minimalist"
-        />
+        {inputTexts.map((input) => (
+          <TextInput
+            key={input.id}
+            // name={input.name}
+            // value={input.value}
+            // placeholder={input.placeholder}
+            // Icon={input.Icon}
+
+            {...input}
+            onChange={handleChange}
+            version="minimalist"
+          />
+        ))}
       </div>
       <div className="submit">
         <Button
