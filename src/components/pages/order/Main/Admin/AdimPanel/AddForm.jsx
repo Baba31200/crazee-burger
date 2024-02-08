@@ -9,6 +9,7 @@ import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import Button from "../../../../../reusable-ui/Button";
+import ImagePreview from "./ImagePreview";
 
 export const EMPTY_PRODUCT = {
   id: "",
@@ -58,13 +59,10 @@ function AddForm() {
   //Affichage
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-      <div className="image-preview">
-        {newProduct.imageSource ? (
-          <img src={newProduct.imageSource} alt={newProduct.title} />
-        ) : (
-          <div className="empty-image">Aucune Image</div>
-        )}
-      </div>
+      <ImagePreview
+        imageSource={newProduct.imageSource}
+        title={newProduct.title}
+      />
       <div className="input-fields">
         <TextInput
           name="title"
@@ -125,33 +123,6 @@ const AddFormStyled = styled.form`
   grid-column-gap: 20px;
   grid-row-gap: 8px;
 
-  
-  .image-preview {
-    /* background: red; */
-    grid-area: 1/1/4/2;
-    display: float;
-    justify-content: center;
-    align-items: center;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-    .empty-image {
-      height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid ${theme.colors.greyLight};
-    line-height: 1.5;
-    color: ${theme.colors.greySemiDark};
-    border-radius: ${theme.borderRadius.round};
-  }
-    }
-  }
   .input-fields {
     /* background: blue; */
     grid-area: 1/2/-2/3;
@@ -165,7 +136,7 @@ const AddFormStyled = styled.form`
     display: flex;
     align-items: center;
     position: relative;
-    top:3px;
+    top: 3px;
 
     .submit-button {
       width: 50%;
@@ -173,28 +144,26 @@ const AddFormStyled = styled.form`
 
     .submit-message {
       /* border: 1px solid red; */
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      margin-left:5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 5px;
 
-      .icon{
-        color:${theme.colors.success};
-        margin-left:10px;
+      .icon {
+        color: ${theme.colors.success};
+        margin-left: 10px;
         width: 1em;
-        height:1em;
-        border:1px solid ${theme.colors.success};
-        border-radius:50%;
+        height: 1em;
+        border: 1px solid ${theme.colors.success};
+        border-radius: 50%;
         vertical-align: middle;
       }
-      .message{
-        margin-left:5px;
+      .message {
+        margin-left: 5px;
         font-size: ${theme.fonts.size.SM};
         color: ${theme.colors.success};
-        
       }
     }
-
   }
 `;
 export default AddForm;
