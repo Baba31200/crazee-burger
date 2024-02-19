@@ -34,7 +34,6 @@ const fonts = {
     XXS: "10px",
     XS: "12px",
     SM: "15px",
-    SM: "16px",
     P1: "18px",
     P2: "20px",
     P3: "24px",
@@ -49,6 +48,9 @@ const fonts = {
     semiBold: 600,
     bold: 700,
     heavy: 800,
+  },
+  family: {
+    stylish: `"Amatic SC", cursive`,
   },
 };
 const gridUnit = 8;

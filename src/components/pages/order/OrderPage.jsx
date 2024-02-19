@@ -9,9 +9,9 @@ import { EMPTY_PRODUCT } from "./Main/Admin/AdimPanel/AddForm";
 
 export default function OrderPage() {
   // state
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [currentTabSelected, setCurrentTabSelected] = useState("add");
+  const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [menu, setMenu] = useState(fakeMenu.EMPTY);
   const [newProduct, setNewproduct] = useState(EMPTY_PRODUCT);
 

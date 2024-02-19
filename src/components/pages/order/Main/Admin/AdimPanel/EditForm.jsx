@@ -1,5 +1,11 @@
+import HintMessage from "./HintMessage";
+
 function EditForm() {
-  return <div>edit form</div>;
+  return (
+    <div>
+      <HintMessage />
+    </div>
+  );
 }
 
 export default EditForm;
