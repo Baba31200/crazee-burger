@@ -2,21 +2,25 @@ import { useContext } from "react";
 import HintMessage from "./HintMessage";
 import OrderContext from "../../../../../../context/OrderContext";
 import styled from "styled-components";
-import SubmitMessage from "./SubmitMessage";
+
 import ImagePreview from "./ImagePreview";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextsConfig";
-import { useState } from "react";
 
 function EditForm() {
-  const [productBeingEdited, setProductBeingEdited] = useState();
-  const { productSelected } = useContext(OrderContext);
+  const { productSelected, setProductSelected, handleEdit } =
+    useContext(OrderContext);
+
   const inputTexts = getInputTextsConfig(productSelected);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
-    setProductBeingEdited({ ...productBeingEdited, [name]: value });
+    const productBeingUpdated = {
+      ...productSelected,
+      [name]: value,
+    };
+    setProductSelected(productBeingUpdated); //cette ligne update le formulaire
+    handleEdit(productBeingUpdated, event); //cette ligne update le menu
   };
 
   return (
@@ -28,13 +32,14 @@ function EditForm() {
       <div className="input-fields">
         {inputTexts.map((input) => (
           <TextInput
-            key={input.id}
             {...input}
+            key={input.id}
             onChange={handleChange}
             version="minimalist"
           />
         ))}
       </div>
+      <div className="submit"></div>
     </EditFormStyled>
   );
 }
