@@ -5,7 +5,7 @@ import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
-import { EMPTY_PRODUCT } from "./Main/Admin/AdimPanel/AddForm";
+import { EMPTY_PRODUCT } from "../../../enums/product";
 
 export default function OrderPage() {
   // state
@@ -14,7 +14,7 @@ export default function OrderPage() {
   const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [menu, setMenu] = useState(fakeMenu.EMPTY);
   const [newProduct, setNewproduct] = useState(EMPTY_PRODUCT);
-
+  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
   // comportements
 
   const handleAdd = (newProduct) => {
@@ -62,6 +62,8 @@ export default function OrderPage() {
     resetMenu,
     newProduct,
     setNewproduct,
+    productSelected,
+    setProductSelected,
   };
 
   //affichage
