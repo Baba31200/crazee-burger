@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import HintMessage from "./HintMessage";
 import OrderContext from "../../../../../../context/OrderContext";
 import styled from "styled-components";
@@ -9,7 +9,7 @@ import { getInputTextsConfig } from "./inputTextsConfig";
 
 function EditForm() {
   //state
-  const { productSelected, setProductSelected, handleEdit } =
+  const { productSelected, setProductSelected, handleEdit, titleEditRef } =
     useContext(OrderContext);
 
   const inputTexts = getInputTextsConfig(productSelected);
@@ -39,6 +39,7 @@ function EditForm() {
             key={input.id}
             onChange={handleChange}
             version="minimalist"
+            ref={input.name === "title" ? titleEditRef : null}
           />
         ))}
       </div>
