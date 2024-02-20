@@ -16,7 +16,7 @@ export default function OrderPage() {
   const [menu, setMenu] = useState(fakeMenu.MEDIUM);
   const [newProduct, setNewproduct] = useState(EMPTY_PRODUCT);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
-  // comportements
+  // comportements (gestionnaire du state ou state handler)
 
   const handleAdd = (newProduct) => {
     //1. copie du tableau

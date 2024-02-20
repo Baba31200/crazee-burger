@@ -8,11 +8,13 @@ import TextInput from "../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextsConfig";
 
 function EditForm() {
+  //state
   const { productSelected, setProductSelected, handleEdit } =
     useContext(OrderContext);
 
   const inputTexts = getInputTextsConfig(productSelected);
 
+  //comportement( gestionnaire  d'evenement ou event handler)
   const handleChange = (event) => {
     const { name, value } = event.target;
     const productBeingUpdated = {
@@ -23,6 +25,7 @@ function EditForm() {
     handleEdit(productBeingUpdated, event); //cette ligne update le menu
   };
 
+  //Affihage
   return (
     <EditFormStyled>
       <ImagePreview
