@@ -15,7 +15,7 @@ export default function OrderPage() {
   const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [menu, setMenu] = useState(fakeMenu.MEDIUM);
   const [newProduct, setNewproduct] = useState(EMPTY_PRODUCT);
-  const [productSelected, setProductSelected] = useState(fakeMenu.SMALL[0]);
+  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
   // comportements (gestionnaire du state ou state handler)
 
