@@ -60,7 +60,7 @@ const Form = React.forwardRef(
             />
           ))}
         </div>
-        <div className="submit">{children}</div>
+        <div className="form-footer">{children}</div>
       </FormStyled>
     );
   }
@@ -85,16 +85,12 @@ const FormStyled = styled.form`
     display: grid;
     grid-row-gap: 8px;
   }
-  .submit {
+  .form-footer {
     /* background: green; */
-    grid-area: 4/-2/-1/-1;
+    grid-area: 4 / -2 / -1 / -1;
     display: flex;
     align-items: center;
     position: relative;
     top: 3px;
-
-    .submit-button {
-      height: 100%;
-    }
   }
 `;
