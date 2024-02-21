@@ -21,12 +21,9 @@ function EditForm() {
 
   //Affihage
   return (
-    <Form
-      product={productSelected}
-      onChange={handleChange}
-      ref={titleEditRef}
-      QUELQUECHOSE={<EditInfoMessage />}
-    />
+    <Form product={productSelected} onChange={handleChange} ref={titleEditRef}>
+      <EditInfoMessage />
+    </Form>
   );
 }
 

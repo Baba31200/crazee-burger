@@ -48,22 +48,16 @@ function AddForm() {
 
   //Affichage
   return (
-    <Form
-      product={newProduct}
-      onSubmit={handleSubmit}
-      onChange={handleChange}
-      isSubmitted={isSubmitted}
-      QUELQUECHOSE={
-        <>
-          <Button
-            className="submit-button"
-            label={"Ajouter un nouveau produit au menu"}
-            version="success"
-          />
-          {isSubmitted && <SubmitMessage />}
-        </>
-      }
-    />
+    <Form product={newProduct} onSubmit={handleSubmit} onChange={handleChange}>
+      <>
+        <Button
+          className="submit-button"
+          label={"Ajouter un nouveau produit au menu"}
+          version="success"
+        />
+        {isSubmitted && <SubmitMessage />}
+      </>
+    </Form>
   );
 }
 export default AddForm;
