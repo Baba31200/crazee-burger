@@ -3,8 +3,9 @@ import { MdModeEditOutline } from "react-icons/md";
 import AddForm from "./AdimPanel/AddForm";
 
 import EditForm from "./AdimPanel/EditForm";
+import HintMessage from "./AdimPanel/HintMessage";
 
-export const tabsConfig = [
+export const getTabsConfig = (hasAlreadyBeenClicked) => [
   {
     index: "add",
     label: "Ajouter un produit",
@@ -15,7 +16,7 @@ export const tabsConfig = [
     index: "edit",
     label: "Modifier un produit",
     Icon: <MdModeEditOutline />,
-    content: <EditForm />,
+    content: hasAlreadyBeenClicked ? <EditForm /> : <HintMessage />,
   },
 ];
 

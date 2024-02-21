@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 import Button from "./Button";
-
 import { TiDelete } from "react-icons/ti";
 
 export default function Card({
@@ -31,6 +30,7 @@ export default function Card({
             <TiDelete className="icon" />
           </button>
         )}
+
         <div className="image">
           <img src={imageSource} alt={title} />
         </div>
