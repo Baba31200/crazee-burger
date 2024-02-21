@@ -1,87 +1,73 @@
+/* eslint-disable react/display-name */
+import React from "react";
 import styled from "styled-components";
 
 import TextInput from "../../../../../reusable-ui/TextInput";
 
-import Button from "../../../../../reusable-ui/Button";
 import ImagePreview from "./ImagePreview";
-import SubmitMessage from "./SubmitMessage";
+
 import { getInputTextsConfig } from "./inputTextsConfig";
 
-function Form({ product, onSubmit, onChange, isSubmitted }) {
-  //State
+const Form = React.forwardRef(
+  ({ product, onSubmit, onChange, isSubmitted, QUELQUECHOSE }, ref) => {
+    //State (vide)
 
-  //   const { handleAdd, newProduct, setNewproduct } = useContext(OrderContext);
+    //Comportement (vide)
 
-  // const [newProduct, setNewproduct] = useState(EMPTY_PRODUCT);
-
-  //Comportement
-
-  const inputTexts = getInputTextsConfig(product);
-  // const inputTexts = [
-  //   {
-  //     id: "0",
-  //     name: "title",
-  //     value: newProduct.title,
-  //     type: "text",
-  //     placeholder: "Nom du produit (ex: super burger)",
-  //     Icon: <FaHamburger />,
-  //     version: "minimalist",
-  //   },
-  //   {
-  //     id: "1",
-  //     name: "imageSource",
-  //     value: newProduct.imageSource,
-  //     type: "text",
-  //     placeholder:
-  //       "Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)",
-  //     Icon: <BsFillCameraFill />,
-  //     version: "minimalist",
-  //   },
-  //   {
-  //     id: "2",
-  //     name: "price",
-  //     value: newProduct.price ? newProduct.price : "",
-  //     type: "text",
-  //     placeholder: "Prix",
-  //     Icon: <MdOutlineEuro />,
-  //     version: "minimalist",
-  //   },
-  // ];
-  //Affichage
-  return (
-    <FormStyled onSubmit={onSubmit}>
-      <ImagePreview imageSource={product.imageSource} title={product.title} />
-      <div className="input-fields">
-        {inputTexts.map((input) => (
-          <TextInput
-            key={input.id}
-            // name={input.name}
-            // value={input.value}
-            // placeholder={input.placeholder}
-            // Icon={input.Icon}
-
-            {...input}
-            onChange={onChange}
-            version="minimalist"
-          />
-        ))}
-      </div>
-      <div className="submit">
-        <Button
-          className="submit-button"
-          label={"Ajouter un nouveau produit au menu"}
-          version="success"
-        />
-
-        {isSubmitted && <SubmitMessage />}
-      </div>
-    </FormStyled>
-  );
-}
+    const inputTexts = getInputTextsConfig(product);
+    // const inputTexts = [
+    //   {
+    //     id: "0",
+    //     name: "title",
+    //     value: newProduct.title,
+    //     type: "text",
+    //     placeholder: "Nom du produit (ex: super burger)",
+    //     Icon: <FaHamburger />,
+    //     version: "minimalist",
+    //   },
+    //   {
+    //     id: "1",
+    //     name: "imageSource",
+    //     value: newProduct.imageSource,
+    //     type: "text",
+    //     placeholder:
+    //       "Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)",
+    //     Icon: <BsFillCameraFill />,
+    //     version: "minimalist",
+    //   },
+    //   {
+    //     id: "2",
+    //     name: "price",
+    //     value: newProduct.price ? newProduct.price : "",
+    //     type: "text",
+    //     placeholder: "Prix",
+    //     Icon: <MdOutlineEuro />,
+    //     version: "minimalist",
+    //   },
+    // ];
+    //Affichage
+    return (
+      <FormStyled onSubmit={onSubmit}>
+        <ImagePreview imageSource={product.imageSource} title={product.title} />
+        <div className="input-fields">
+          {inputTexts.map((input) => (
+            <TextInput
+              key={input.id}
+              {...input}
+              onChange={onChange}
+              version="minimalist"
+              ref={ref && input.name === "title" ? ref : null}
+            />
+          ))}
+        </div>
+        <div className="submit">{QUELQUECHOSE}</div>
+      </FormStyled>
+    );
+  }
+);
+export default Form;
 
 const FormStyled = styled.form`
-  /* border: 2px solid black; */
-
   display: grid;
 
   grid-template-columns: 1fr 3fr;
@@ -113,4 +99,3 @@ const FormStyled = styled.form`
     }
   }
 `;
-export default Form;

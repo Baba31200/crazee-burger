@@ -10,12 +10,12 @@ import { deepClone } from "../../../utils/array";
 
 export default function OrderPage() {
   // state
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [currentTabSelected, setCurrentTabSelected] = useState("add");
+  const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [menu, setMenu] = useState(fakeMenu.MEDIUM);
   const [newProduct, setNewproduct] = useState(EMPTY_PRODUCT);
-  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
+  const [productSelected, setProductSelected] = useState(fakeMenu.SMALL[0]);
   const titleEditRef = useRef();
   // comportements (gestionnaire du state ou state handler)
 
