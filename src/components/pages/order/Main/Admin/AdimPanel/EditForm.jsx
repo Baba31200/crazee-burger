@@ -1,12 +1,12 @@
 import { useContext, useRef } from "react";
-import HintMessage from "./HintMessage";
+// import HintMessage from "./HintMessage";
 import OrderContext from "../../../../../../context/OrderContext";
 import styled from "styled-components";
 
 import ImagePreview from "./ImagePreview";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextsConfig";
-import { theme } from "../../../../../../theme";
+// import { theme } from "../../../../../../theme";
 import EditInfoMessage from "./EditInfoMessage";
 
 function EditForm() {
