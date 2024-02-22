@@ -1,6 +1,6 @@
 import { BsFileCheck } from "react-icons/bs";
 import styled from "styled-components";
-import { theme } from "../../../../../../theme";
+import { theme } from "../../../../../../../theme";
 
 function SubmitMessage() {
   return (
