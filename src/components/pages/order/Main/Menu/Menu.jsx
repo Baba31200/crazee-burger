@@ -6,21 +6,50 @@ import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import { checkIfProductIsClicked } from "./helper";
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 export default function Menu() {
-  // const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+  const {
+    menu,
+    isModeAdmin,
+    handleDelete,
+    resetMenu,
+    productSelected,
+    setProductSelected,
+    setIsCollapsed,
+    setCurrentTabSelected,
+    titleEditRef,
+  } = useContext(OrderContext);
+  // state
 
-  const { menu, isModeAdmin, handleDelete, resetMenu } =
-    useContext(OrderContext);
-  //comportement
+  // comportements (gestionnaires d'événement ou "event handlers")
+  const handleClick = async (idProductClicked) => {
+    if (!isModeAdmin) return;
 
-  //Affichage
+    await setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
+    const productClickedOn = menu.find(
+      (product) => product.id === idProductClicked
+    );
+    await setProductSelected(productClickedOn);
+    titleEditRef.current.focus();
+  };
 
+  // affichage
   if (menu.length === 0) {
     if (!isModeAdmin) return <EmptyMenuClient />;
     return <EmptyMenuAdmin onReset={resetMenu} />;
   }
+
+  const handleCardDelete = (event, idProductToDelete) => {
+    event.stopPropagation();
+    handleDelete(idProductToDelete);
+    idProductToDelete === productSelected.id &&
+      setProductSelected(EMPTY_PRODUCT);
+    titleEditRef.current.focus();
+  };
 
   return (
     <MenuStyled className="menu">
@@ -32,7 +61,10 @@ export default function Menu() {
             imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
-            onDelete={() => handleDelete(id)}
+            onDelete={(event) => handleCardDelete(event, id)}
+            onClick={() => handleClick(id)}
+            isHoverable={isModeAdmin}
+            isSelected={checkIfProductIsClicked(id, productSelected.id)}
           />
         );
       })}
@@ -41,7 +73,6 @@ export default function Menu() {
 }
 
 const MenuStyled = styled.div`
-  /* border: 1px solid blue; */
   background: ${theme.colors.background_white};
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -50,6 +81,5 @@ const MenuStyled = styled.div`
   padding: 50px 50px 150px;
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-
   overflow-y: scroll;
 `;

@@ -9,6 +9,10 @@ export default function ToggleButton({
   labelIfChecked = "Fermer",
   labelIfUnchecked = "Ouvrir",
 }) {
+  //state (vide)
+  //Comportement(vide)
+
+  //Affichage
   return (
     <ToggleButtonStyled>
       <input
