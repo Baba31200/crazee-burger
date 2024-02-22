@@ -11,32 +11,33 @@ import { EMPTY_PRODUCT } from "../../../../../enums/product";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 export default function Menu() {
-  //state
   const {
     menu,
     isModeAdmin,
     handleDelete,
     resetMenu,
-    setProductSelected,
     productSelected,
+    setProductSelected,
     setIsCollapsed,
     setCurrentTabSelected,
     titleEditRef,
   } = useContext(OrderContext);
-  //comportement( gestionnaire  d'evenement ou event handler)
+  // state
+
+  // comportements (gestionnaires d'événement ou "event handlers")
   const handleClick = async (idProductClicked) => {
     if (!isModeAdmin) return;
+
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
     const productClickedOn = menu.find(
       (product) => product.id === idProductClicked
     );
     await setProductSelected(productClickedOn);
-
     titleEditRef.current.focus();
   };
 
-  //Affichage
+  // affichage
   if (menu.length === 0) {
     if (!isModeAdmin) return <EmptyMenuClient />;
     return <EmptyMenuAdmin onReset={resetMenu} />;
@@ -47,9 +48,9 @@ export default function Menu() {
     handleDelete(idProductToDelete);
     idProductToDelete === productSelected.id &&
       setProductSelected(EMPTY_PRODUCT);
-
     titleEditRef.current.focus();
   };
+
   return (
     <MenuStyled className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
@@ -72,7 +73,6 @@ export default function Menu() {
 }
 
 const MenuStyled = styled.div`
-  /* border: 1px solid blue; */
   background: ${theme.colors.background_white};
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -81,6 +81,5 @@ const MenuStyled = styled.div`
   padding: 50px 50px 150px;
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-
   overflow-y: scroll;
 `;
