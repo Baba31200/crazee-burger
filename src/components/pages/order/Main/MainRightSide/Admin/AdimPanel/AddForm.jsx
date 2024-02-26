@@ -34,13 +34,6 @@ export default function AddForm() {
     setNewProduct({ ...newProduct, [name]: value });
   };
 
-  // const displaySuccessMessage = () => {
-  //   setIsSubmitted(true);
-  //   setTimeout(() => {
-  //     setIsSubmitted(false);
-  //   }, 2000);
-  // };
-
   // affichage
   return (
     <Form product={newProduct} onSubmit={handleSubmit} onChange={handleChange}>
