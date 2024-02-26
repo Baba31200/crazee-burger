@@ -2,18 +2,16 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import Header from "../../../../reusable-ui/Header";
 
-function Totale({ amountTopay }) {
+export default function Total({ amountToPay }) {
   return (
     <Header>
       <TotalStyled>
         <span className="total">Total</span>
-        <span className="amount">{amountTopay}</span>
+        <span className="amount">{amountToPay}</span>
       </TotalStyled>
     </Header>
   );
 }
-
-export default Totale;
 
 const TotalStyled = styled.div`
   height: 100%;

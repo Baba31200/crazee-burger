@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 import OrderContext from "../../../../../../../context/OrderContext";
 
@@ -8,56 +8,43 @@ import Form from "./Form";
 
 import SubmitButton from "./SubmitButton";
 
-function AddForm() {
-  //State
+import { useSuccessMessage } from "../../../../../../../hooks/useDisplaySuccessMessage";
 
-  const { handleAdd, newProduct, setNewproduct } = useContext(OrderContext);
+export default function AddForm() {
+  // state
+  const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
+  const { isSubmitted, displaySuccessMessage } = useSuccessMessage();
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  //Comportement
-
+  // comportements
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const newProductToAdd = {
       ...newProduct,
       id: crypto.randomUUID(),
     };
 
     handleAdd(newProductToAdd);
-    setNewproduct(EMPTY_PRODUCT);
+    setNewProduct(EMPTY_PRODUCT);
 
-    setIsSubmitted(true);
-
-    displaySuccesMessage();
+    displaySuccessMessage();
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
-    setNewproduct({ ...newProduct, [name]: value });
+    setNewProduct({ ...newProduct, [name]: value });
   };
 
-  const displaySuccesMessage = () => {
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 2000);
-  };
+  // const displaySuccessMessage = () => {
+  //   setIsSubmitted(true);
+  //   setTimeout(() => {
+  //     setIsSubmitted(false);
+  //   }, 2000);
+  // };
 
-  //Affichage
+  // affichage
   return (
     <Form product={newProduct} onSubmit={handleSubmit} onChange={handleChange}>
-      {/* <>
-        <Button
-          className="submit-button"
-          label={"Ajouter un nouveau produit au menu"}
-          version="success"
-        />
-        {isSubmitted && <SubmitMessage />}
-      </> */}
       <SubmitButton isSubmitted={isSubmitted} />
     </Form>
   );
 }
-export default AddForm;

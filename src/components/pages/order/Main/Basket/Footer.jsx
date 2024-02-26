@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Header from "../../../../reusable-ui/Header";
 import { theme } from "../../../../../theme";
 
-function Footer() {
+export default function Footer() {
   return (
     <Header>
       <FooterStyled>
@@ -11,8 +11,6 @@ function Footer() {
     </Header>
   );
 }
-
-export default Footer;
 
 const FooterStyled = styled.div`
   height: 100%;
