@@ -4,66 +4,67 @@ import { theme } from "../../../theme";
 import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
 import OrderContext from "../../../context/OrderContext";
-import { fakeMenu } from "../../../fakeData/fakeMenu";
+
 import { EMPTY_PRODUCT } from "../../../enums/product";
-import { deepClone } from "../../../utils/array";
+
+import useMenu from "../../../hooks/useMenu";
 
 export default function OrderPage() {
   // state
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
   const [newProduct, setNewproduct] = useState(EMPTY_PRODUCT);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
-  // comportements (gestionnaire du state ou state handler)
+  const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu();
+  // // comportements (gestionnaire du state ou state handler)
 
-  const handleAdd = (newProduct) => {
-    //1. copie du tableau
+  // const handleAdd = (newProduct) => {
+  //   //1. copie du tableau
 
-    const menuCopy = deepClone(menu);
+  //   const menuCopy = deepClone(menu);
 
-    //2.  manip de la copie du menu
+  //   //2.  manip de la copie du menu
 
-    const menuUpdated = [newProduct, ...menuCopy];
+  //   const menuUpdated = [newProduct, ...menuCopy];
 
-    //3. update du state
-    setMenu(menuUpdated);
-  };
+  //   //3. update du state
+  //   setMenu(menuUpdated);
+  // };
 
-  const handleDelete = (idOfProductToDelete) => {
-    //copie du state
-    const menuCopy = deepClone(menu);
+  // const handleDelete = (idOfProductToDelete) => {
+  //   //copie du state
+  //   const menuCopy = deepClone(menu);
 
-    //manipulation du copie du state
+  //   //manipulation du copie du state
 
-    const menuUpdated = menuCopy.filter(
-      (product) => product.id !== idOfProductToDelete
-    );
+  //   const menuUpdated = menuCopy.filter(
+  //     (product) => product.id !== idOfProductToDelete
+  //   );
 
-    //update du state
+  //   //update du state
 
-    setMenu(menuUpdated);
-  };
+  //   setMenu(menuUpdated);
+  // };
 
-  const handleEdit = (productBeingEdited) => {
-    //1. copie du state (deep clone)
-    const menuCopy = deepClone(menu);
+  // const handleEdit = (productBeingEdited) => {
+  //   //1. copie du state (deep clone)
+  //   const menuCopy = deepClone(menu);
 
-    //2 manipulation du copie du state
-    const indexOfProductToEdit = menu.findIndex(
-      (menuProduct) => menuProduct.id === productBeingEdited.id
-    );
+  //   //2 manipulation du copie du state
+  //   const indexOfProductToEdit = menu.findIndex(
+  //     (menuProduct) => menuProduct.id === productBeingEdited.id
+  //   );
 
-    menuCopy[indexOfProductToEdit] = productBeingEdited;
-    //3 update du state
-    setMenu(menuCopy);
-  };
+  //   menuCopy[indexOfProductToEdit] = productBeingEdited;
+  //   //3 update du state
+  //   setMenu(menuCopy);
+  // };
 
-  const resetMenu = () => {
-    setMenu(fakeMenu.MEDIUM);
-  };
+  // const resetMenu = () => {
+  //   setMenu(fakeMenu.MEDIUM);
+  // };
 
   const orderContextValue = {
     isModeAdmin,

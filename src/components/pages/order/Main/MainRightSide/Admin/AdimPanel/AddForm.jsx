@@ -8,7 +8,7 @@ import Form from "./Form";
 
 import SubmitButton from "./SubmitButton";
 
-import { useSuccessMessage } from "../../../../../../../hooks/useDisplaySuccessMessage";
+import { useSuccessMessage } from "../../../../../../../hooks/useSuccessMessage";
 
 export default function AddForm() {
   // state
