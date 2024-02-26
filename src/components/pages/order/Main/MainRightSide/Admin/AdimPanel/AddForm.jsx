@@ -13,6 +13,7 @@ import { useSuccessMessage } from "../../../../../../../hooks/useSuccessMessage"
 export default function AddForm() {
   // state
   const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
+  // const [isSubmitted, setIsSubmitted] = useState(false);
   const { isSubmitted, displaySuccessMessage } = useSuccessMessage();
 
   // comportements
@@ -33,6 +34,13 @@ export default function AddForm() {
     const { name, value } = event.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
+
+  // const displaySuccessMessage = () => {
+  //   setIsSubmitted(true);
+  //   setTimeout(() => {
+  //     setIsSubmitted(false);
+  //   }, 2000);
+  // };
 
   // affichage
   return (
