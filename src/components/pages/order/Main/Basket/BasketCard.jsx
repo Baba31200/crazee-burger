@@ -57,6 +57,8 @@ const BasketCardStyled = styled.div`
       height: 100%;
       width: 100%;
       object-fit: contain;
+      position: relative;
+      bottom: 10px;
     }
   }
 
@@ -73,6 +75,8 @@ const BasketCardStyled = styled.div`
       display: grid;
       grid-template-rows: 60% 40%;
       margin-left: 21px;
+      font-family: Amatic SC;
+
       /* align-items: center; */
       .title {
         display: flex;
@@ -85,6 +89,8 @@ const BasketCardStyled = styled.div`
         color: ${theme.colors.dark};
         /* sans cette div avec "min-width: 0", l'ellipsis ne fonctionne pas dans un span : https://semicolon.dev/tutorial/css/text-overflow-ellipsis-doesnt-work#:~:text=If%20your%20text%2Doverflow%20is,Grid%20or%20on%20a%20Table. */
         min-width: 0;
+        position: relative;
+        bottom: 50px;
         span {
           overflow: hidden;
           /* width: 100%; */
@@ -99,6 +105,8 @@ const BasketCardStyled = styled.div`
         font-weight: ${theme.fonts.weights.medium};
         font-family: ${theme.fonts.family.openSans};
         /* color: ${theme.colors.white}; */
+        position: relative;
+        bottom: 45px;
       }
     }
 
@@ -118,6 +126,8 @@ const BasketCardStyled = styled.div`
   .delete-button {
     display: none;
     z-index: 1;
+    position: relative;
+    bottom: 70px;
   }
 
   :hover {
