@@ -1,19 +1,25 @@
 import styled from "styled-components";
 import BasketCard from "./BasketCard";
+import { IMAGE_COMING_SOON } from "../../../../../enums/product";
 
-function BasketProducts({ basket }) {
+export default function BasketProducts({ basket }) {
   return (
     <BasketProductsStyled>
       {basket.map((basketProduct) => (
         <div className="basket-card">
-          <BasketCard {...basketProduct} />
+          <BasketCard
+            {...basketProduct}
+            imageSource={
+              basketProduct.imageSource
+                ? basketProduct.imageSource
+                : IMAGE_COMING_SOON
+            }
+          />
         </div>
       ))}
     </BasketProductsStyled>
   );
 }
-
-export default BasketProducts;
 
 const BasketProductsStyled = styled.div`
   /* border: 1px solid red; */

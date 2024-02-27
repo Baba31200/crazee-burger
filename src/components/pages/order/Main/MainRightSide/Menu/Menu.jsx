@@ -7,9 +7,11 @@ import OrderContext from "../../../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
-import { EMPTY_PRODUCT } from "../../../../../../enums/product";
+import {
+  EMPTY_PRODUCT,
+  IMAGE_COMING_SOON,
+} from "../../../../../../enums/product";
 
-const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 export default function Menu() {
   const {
     menu,
@@ -58,7 +60,7 @@ export default function Menu() {
           <Card
             key={id}
             title={title}
-            imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
+            imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={(event) => handleCardDelete(event, id)}
@@ -75,8 +77,8 @@ export default function Menu() {
 const MenuStyled = styled.div`
   background: ${theme.colors.background_white};
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
   justify-items: center;
