@@ -10,13 +10,13 @@ export const getTabsConfig = (hasAlreadyBeenClicked) => [
     index: "add",
     label: "Ajouter un produit",
     Icon: <AiOutlinePlus />,
-    content: <AddForm />,
+    Content: <AddForm />,
   },
   {
     index: "edit",
     label: "Modifier un produit",
     Icon: <MdModeEditOutline />,
-    content: hasAlreadyBeenClicked ? <EditForm /> : <HintMessage />,
+    Content: hasAlreadyBeenClicked ? <EditForm /> : <HintMessage />,
   },
 ];
 

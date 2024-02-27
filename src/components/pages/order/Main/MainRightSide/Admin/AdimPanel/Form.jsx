@@ -1,51 +1,23 @@
 /* eslint-disable react/display-name */
+/* eslint-disable react/prop-types */
 import React from "react";
 import styled from "styled-components";
 
-import TextInput from "../../../../../reusable-ui/TextInput";
+import TextInput from "../../../../../../reusable-ui/TextInput";
 
 import ImagePreview from "./ImagePreview";
 
 import { getInputTextsConfig } from "./inputTextsConfig";
 
 const Form = React.forwardRef(
-  ({ product, onSubmit, onChange, isSubmitted, children }, ref) => {
-    //State (vide)
+  ({ product, onSubmit, onChange, children }, ref) => {
+    // state (vide)
 
-    //Comportement (vide)
+    // comportements (vide)
 
     const inputTexts = getInputTextsConfig(product);
-    // const inputTexts = [
-    //   {
-    //     id: "0",
-    //     name: "title",
-    //     value: newProduct.title,
-    //     type: "text",
-    //     placeholder: "Nom du produit (ex: super burger)",
-    //     Icon: <FaHamburger />,
-    //     version: "minimalist",
-    //   },
-    //   {
-    //     id: "1",
-    //     name: "imageSource",
-    //     value: newProduct.imageSource,
-    //     type: "text",
-    //     placeholder:
-    //       "Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)",
-    //     Icon: <BsFillCameraFill />,
-    //     version: "minimalist",
-    //   },
-    //   {
-    //     id: "2",
-    //     name: "price",
-    //     value: newProduct.price ? newProduct.price : "",
-    //     type: "text",
-    //     placeholder: "Prix",
-    //     Icon: <MdOutlineEuro />,
-    //     version: "minimalist",
-    //   },
-    // ];
-    //Affichage
+
+    // affichage
     return (
       <FormStyled onSubmit={onSubmit}>
         <ImagePreview imageSource={product.imageSource} title={product.title} />

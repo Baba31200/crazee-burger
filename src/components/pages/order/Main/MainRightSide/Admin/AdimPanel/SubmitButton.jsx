@@ -1,8 +1,8 @@
-import Button from "../../../../../reusable-ui/Button";
+import Button from "../../../../../../reusable-ui/Button";
 
 import SubmitMessage from "./SubmitMessage";
 // eslint-disable-next-line react/prop-types
-function SubmitButton({ isSubmitted }) {
+export default function SubmitButton({ isSubmitted }) {
   return (
     <>
       <Button
@@ -14,5 +14,3 @@ function SubmitButton({ isSubmitted }) {
     </>
   );
 }
-
-export default SubmitButton;

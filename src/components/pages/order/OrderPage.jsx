@@ -4,66 +4,20 @@ import { theme } from "../../../theme";
 import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
 import OrderContext from "../../../context/OrderContext";
-import { fakeMenu } from "../../../fakeData/fakeMenu";
+
 import { EMPTY_PRODUCT } from "../../../enums/product";
-import { deepClone } from "../../../utils/array";
+
+import { useMenu } from "../../../hooks/useMenu";
 
 export default function OrderPage() {
   // state
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
-  const [newProduct, setNewproduct] = useState(EMPTY_PRODUCT);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
-  // comportements (gestionnaire du state ou state handler)
-
-  const handleAdd = (newProduct) => {
-    //1. copie du tableau
-
-    const menuCopy = deepClone(menu);
-
-    //2.  manip de la copie du menu
-
-    const menuUpdated = [newProduct, ...menuCopy];
-
-    //3. update du state
-    setMenu(menuUpdated);
-  };
-
-  const handleDelete = (idOfProductToDelete) => {
-    //copie du state
-    const menuCopy = deepClone(menu);
-
-    //manipulation du copie du state
-
-    const menuUpdated = menuCopy.filter(
-      (product) => product.id !== idOfProductToDelete
-    );
-
-    //update du state
-
-    setMenu(menuUpdated);
-  };
-
-  const handleEdit = (productBeingEdited) => {
-    //1. copie du state (deep clone)
-    const menuCopy = deepClone(menu);
-
-    //2 manipulation du copie du state
-    const indexOfProductToEdit = menu.findIndex(
-      (menuProduct) => menuProduct.id === productBeingEdited.id
-    );
-
-    menuCopy[indexOfProductToEdit] = productBeingEdited;
-    //3 update du state
-    setMenu(menuCopy);
-  };
-
-  const resetMenu = () => {
-    setMenu(fakeMenu.MEDIUM);
-  };
+  const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu();
 
   const orderContextValue = {
     isModeAdmin,
@@ -77,7 +31,7 @@ export default function OrderPage() {
     handleDelete,
     resetMenu,
     newProduct,
-    setNewproduct,
+    setNewProduct,
     productSelected,
     setProductSelected,
     handleEdit,
@@ -107,7 +61,6 @@ const OrderPageStyled = styled.div`
   .container {
     background: red;
     height: 95vh;
-    /* height: 833px; */
     width: 1400px;
     display: flex;
     flex-direction: column;
