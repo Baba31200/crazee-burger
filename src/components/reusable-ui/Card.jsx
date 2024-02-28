@@ -98,7 +98,7 @@ const CardStyled = styled.div`
         width: 100%;
       }
 
-      :hover {
+      &:hover {
         color: ${theme.colors.red};
         /* background-color: red; */
       }

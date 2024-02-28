@@ -11,6 +11,11 @@ export const findIndex = (idWithUnknowwIndex, array) => {
     (itemInArray) => itemInArray.id === idWithUnknowwIndex
   );
 };
+
+export const filter = (idOfItemToRemove, array) => {
+  return array.filter((item) => item.id !== idOfItemToRemove);
+};
+
 // const fruits = [{ nom: "Abricot" }, { nom: "Banane" }]
 // const fruitsShallowCopy = [...fruits]
 // const fruitsDeepCopy = deepClone(fruits)
