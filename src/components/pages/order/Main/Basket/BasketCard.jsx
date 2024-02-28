@@ -9,9 +9,10 @@ export default function BasketCard({
   quantity,
   imageSource,
   className,
+  isModeAdmin,
 }) {
   return (
-    <BasketCardStyled className={className}>
+    <BasketCardStyled className={className} isModeAdmin={isModeAdmin}>
       <div className="delete-button">
         <MdDeleteForever className="icon" />
       </div>
@@ -75,7 +76,7 @@ const BasketCardStyled = styled.div`
       display: grid;
       grid-template-rows: 60% 40%;
       margin-left: 21px;
-      font-family: Amatic SC;
+      /* font-family: Amatic SC; */
 
       /* align-items: center; */
       .title {
@@ -102,7 +103,7 @@ const BasketCardStyled = styled.div`
       .price {
         /* background: blue; */
         font-size: ${theme.fonts.size.SM};
-        font-weight: ${theme.fonts.weights.bold};
+        font-weight: ${theme.fonts.weights.medium};
         font-family: ${theme.fonts.family.openSans};
         /* color: ${theme.colors.white}; */
         position: relative;
@@ -126,12 +127,11 @@ const BasketCardStyled = styled.div`
   .delete-button {
     display: none;
     z-index: 1;
-    position: relative;
-    bottom: 70px;
   }
 
-  :hover {
-    .delete-button-pokemon {
+  /* hover de la card */
+  &:hover {
+    .delete-button {
       /* border: 1px solid red; */
       border: none;
       box-sizing: border-box;
