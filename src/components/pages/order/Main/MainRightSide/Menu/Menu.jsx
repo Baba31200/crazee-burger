@@ -25,6 +25,7 @@ export default function Menu() {
     setCurrentTabSelected,
     titleEditRef,
     handleAddToBasket,
+    handleDeleteBasketProduct,
   } = useContext(OrderContext);
   // state
 
@@ -34,9 +35,7 @@ export default function Menu() {
 
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
-    // const productClickedOn = menu.find(
-    //   (product) => product.id === idProductClicked
-    // );
+    //const productClickedOn = menu.find((product) => product.id === idProductClicked)
     const productClickedOn = find(idProductClicked, menu);
     await setProductSelected(productClickedOn);
     titleEditRef.current.focus();
@@ -51,6 +50,7 @@ export default function Menu() {
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation();
     handleDelete(idProductToDelete);
+    handleDeleteBasketProduct(idProductToDelete);
     idProductToDelete === productSelected.id &&
       setProductSelected(EMPTY_PRODUCT);
     titleEditRef.current.focus();
@@ -58,10 +58,11 @@ export default function Menu() {
 
   const handleAddButton = (event, idProductToAdd) => {
     event.stopPropagation();
-
+    //const productToAdd = menu.find((menuProduct) => menuProduct.id === idProductToAdd)
     const productToAdd = find(idProductToAdd, menu);
     handleAddToBasket(productToAdd);
   };
+
   return (
     <MenuStyled className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
