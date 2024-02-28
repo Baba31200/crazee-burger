@@ -102,7 +102,7 @@ const BasketCardStyled = styled.div`
       .price {
         /* background: blue; */
         font-size: ${theme.fonts.size.SM};
-        font-weight: ${theme.fonts.weights.medium};
+        font-weight: ${theme.fonts.weights.bold};
         font-family: ${theme.fonts.family.openSans};
         /* color: ${theme.colors.white}; */
         position: relative;
