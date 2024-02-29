@@ -13,6 +13,7 @@ export default function Card({
   onClick,
   isHoverable,
   isSelected,
+  onAdd,
 }) {
   // state (vide)
 
@@ -48,7 +49,7 @@ export default function Card({
               <Button
                 className="primary-button"
                 label={"Ajouter"}
-                onClick={(event) => event.stopPropagation()}
+                onClick={onAdd}
               />
             </div>
           </div>
@@ -97,7 +98,7 @@ const CardStyled = styled.div`
         width: 100%;
       }
 
-      :hover {
+      &:hover {
         color: ${theme.colors.red};
         /* background-color: red; */
       }
