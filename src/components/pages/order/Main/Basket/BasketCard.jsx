@@ -34,6 +34,7 @@ export default function BasketCard({
     </BasketCardStyled>
   );
 }
+
 const BasketCardStyled = styled.div`
   cursor: ${({ isModeAdmin }) => (isModeAdmin ? "pointer" : "auto")};
 
