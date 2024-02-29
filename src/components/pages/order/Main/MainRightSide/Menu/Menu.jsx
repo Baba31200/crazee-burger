@@ -22,23 +22,24 @@ export default function Menu() {
     resetMenu,
     productSelected,
     setProductSelected,
-    setIsCollapsed,
-    setCurrentTabSelected,
-    titleEditRef,
     handleAddToBasket,
     handleDeleteBasketProduct,
+    handleProductSelected,
   } = useContext(OrderContext);
   // state
 
   // comportements (gestionnaires d'événement ou "event handlers")
-  const handleClick = async (idProductClicked) => {
-    if (!isModeAdmin) return;
+  const handleCardDelete = (event, idProductToDelete) => {
+    event.stopPropagation();
+    handleDelete(idProductToDelete);
+    handleDeleteBasketProduct(idProductToDelete);
+    idProductToDelete === productSelected.id &&
+      setProductSelected(EMPTY_PRODUCT);
+  };
 
-    await setIsCollapsed(false);
-    await setCurrentTabSelected("edit");
-    const productClickedOn = findObjectById(idProductClicked, menu);
-    await setProductSelected(productClickedOn);
-    titleEditRef.current.focus();
+  const handleAddButton = (event, idProductToAdd) => {
+    event.stopPropagation();
+    handleAddToBasket(idProductToAdd);
   };
 
   // affichage
@@ -46,20 +47,6 @@ export default function Menu() {
     if (!isModeAdmin) return <EmptyMenuClient />;
     return <EmptyMenuAdmin onReset={resetMenu} />;
   }
-
-  const handleCardDelete = (event, idProductToDelete) => {
-    event.stopPropagation();
-    handleDelete(idProductToDelete);
-    handleDeleteBasketProduct(idProductToDelete);
-    idProductToDelete === productSelected.id &&
-      setProductSelected(EMPTY_PRODUCT);
-    titleEditRef.current.focus();
-  };
-
-  const handleAddButton = (event, idProductToAdd) => {
-    event.stopPropagation();
-    handleAddToBasket(idProductToAdd);
-  };
 
   return (
     <MenuStyled className="menu">
@@ -72,7 +59,7 @@ export default function Menu() {
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={(event) => handleCardDelete(event, id)}
-            onClick={() => handleClick(id)}
+            onClick={isModeAdmin ? () => handleProductSelected(id) : null}
             isHoverable={isModeAdmin}
             isSelected={checkIfProductIsClicked(id, productSelected.id)}
             onAdd={(event) => handleAddButton(event, id)}
@@ -82,7 +69,6 @@ export default function Menu() {
     </MenuStyled>
   );
 }
-
 const MenuStyled = styled.div`
   background: ${theme.colors.background_white};
   display: grid;

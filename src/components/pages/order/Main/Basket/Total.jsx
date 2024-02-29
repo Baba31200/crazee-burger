@@ -2,11 +2,14 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import Header from "../../../../reusable-ui/Header";
 import { useContext } from "react";
-import { calculateSumToPay, formatPrice } from "../../../../../utils/maths";
+
 import OrderContext from "../../../../../context/OrderContext";
+import { calculateSumToPay } from "./helper";
+import { formatPrice } from "../../../../../utils/maths";
 
 export default function Total() {
   const { basket, menu } = useContext(OrderContext);
+
   const sumToPay = calculateSumToPay(basket, menu);
 
   return (
@@ -18,7 +21,6 @@ export default function Total() {
     </Header>
   );
 }
-
 const TotalStyled = styled.div`
   height: 100%;
   display: flex;
