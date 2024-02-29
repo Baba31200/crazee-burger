@@ -40,13 +40,13 @@ const extraStylePrimary = css`
   background-color: #ff9f1b;
   border: 1px solid #ff9f1b;
 
-  :hover {
+  &:hover {
     color: ${theme.colors.primary};
     background-color: ${theme.colors.white};
     border: 1px solid ${theme.colors.primary};
     transition: all 200ms ease-out;
   }
-  :active {
+  &:active {
     background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
   }
@@ -61,12 +61,12 @@ const extraStylePrimary = css`
     border: 1px solid white;
     background-color: ${theme.colors.white};
     color: ${theme.colors.primary};
-    :hover {
+    &:hover {
       color: ${theme.colors.white};
       background-color: ${theme.colors.primary};
       border: 1px solid ${theme.colors.white};
     }
-    :active {
+    &:active {
       background-color: ${theme.colors.white};
       color: ${theme.colors.primary};
     }
@@ -88,12 +88,12 @@ const extraStyleSuccess = css`
   height: 100%;
   padding: 0 1.5em;
   font-weight: ${theme.fonts.weights.semiBold};
-  :hover {
+  &:hover {
     background: ${theme.colors.white};
     color: ${theme.colors.success};
     border: 1px solid ${theme.colors.success};
   }
-  :active {
+  &:active {
     color: ${theme.colors.white};
     background: ${theme.colors.success};
     border: 1px solid ${theme.colors.success};
