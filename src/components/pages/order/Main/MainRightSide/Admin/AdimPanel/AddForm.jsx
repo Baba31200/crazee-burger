@@ -9,11 +9,11 @@ import Form from "./Form";
 import SubmitButton from "./SubmitButton";
 
 import { useSuccessMessage } from "../../../../../../../hooks/useSuccessMessage";
+import { replaceFrenchCommaWithDot } from "../../../../../../../utils/maths";
 
 export default function AddForm() {
   // state
   const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
-  // const [isSubmitted, setIsSubmitted] = useState(false);
   const { isSubmitted, displaySuccessMessage } = useSuccessMessage();
 
   // comportements
@@ -22,8 +22,8 @@ export default function AddForm() {
     const newProductToAdd = {
       ...newProduct,
       id: crypto.randomUUID(),
+      price: replaceFrenchCommaWithDot(newProduct.price),
     };
-
     handleAdd(newProductToAdd);
     setNewProduct(EMPTY_PRODUCT);
 
