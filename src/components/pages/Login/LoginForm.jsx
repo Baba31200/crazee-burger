@@ -8,6 +8,7 @@ import { BsPersonCircle } from "react-icons/bs";
 import Button from "../../reusable-ui/Button";
 import { theme } from "../../../theme";
 import { authenticateUser } from "../../../api/user";
+import Welcom from "./Welcom";
 
 function LoginForm() {
   //state
@@ -30,11 +31,7 @@ function LoginForm() {
   //Affichage
   return (
     <LoginFormSyled action="submit" onSubmit={handleSubmit}>
-      <div>
-        <h1>Bienvenue chez nous !</h1>
-        <hr />
-        <h2>Connectez-vous</h2>
-      </div>
+      <Welcom />
       <div>
         <TextInput
           value={username}
