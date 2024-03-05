@@ -12,7 +12,8 @@ import {
   IMAGE_COMING_SOON,
 } from "../../../../../../enums/product";
 
-import { findObjectById, isEmpty } from "../../../../../../utils/array";
+import { isEmpty } from "../../../../../../utils/array";
+import Loader from "./Loader";
 
 export default function Menu() {
   const {
@@ -43,11 +44,12 @@ export default function Menu() {
   };
 
   // affichage
-  if (isEmpty(menu)) {
+  if (menu === undefined) return <Loader />;
+
+  if (isEmpty([menu])) {
     if (!isModeAdmin) return <EmptyMenuClient />;
     return <EmptyMenuAdmin onReset={resetMenu} />;
   }
-
   return (
     <MenuStyled className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
