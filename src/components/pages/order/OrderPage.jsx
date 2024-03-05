@@ -15,7 +15,7 @@ import { getMenu } from "../../../api/product";
 
 export default function OrderPage() {
   // state
-  const [isModeAdmin, setIsModeAdmin] = useState(true);
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
@@ -67,6 +67,8 @@ export default function OrderPage() {
     handleDeleteBasketProduct,
     handleProductSelected,
   };
+
+  //affichage (render)
   return (
     <OrderContext.Provider value={orderContextValue}>
       <OrderPageStyled>

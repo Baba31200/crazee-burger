@@ -17,6 +17,7 @@ import Loader from "./Loader";
 
 export default function Menu() {
   const {
+    username,
     menu,
     isModeAdmin,
     handleDelete,
@@ -32,7 +33,7 @@ export default function Menu() {
   // comportements (gestionnaires d'événement ou "event handlers")
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation();
-    handleDelete(idProductToDelete);
+    handleDelete(idProductToDelete, username);
     handleDeleteBasketProduct(idProductToDelete);
     idProductToDelete === productSelected.id &&
       setProductSelected(EMPTY_PRODUCT);
@@ -46,10 +47,11 @@ export default function Menu() {
   // affichage
   if (menu === undefined) return <Loader />;
 
-  if (isEmpty([menu])) {
+  if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />;
     return <EmptyMenuAdmin onReset={resetMenu} />;
   }
+
   return (
     <MenuStyled className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
@@ -71,6 +73,7 @@ export default function Menu() {
     </MenuStyled>
   );
 }
+
 const MenuStyled = styled.div`
   background: ${theme.colors.background_white};
   display: grid;
