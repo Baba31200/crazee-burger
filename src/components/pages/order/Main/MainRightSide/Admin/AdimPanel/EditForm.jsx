@@ -5,8 +5,13 @@ import Form from "./Form";
 
 export default function EditForm() {
   // state
-  const { productSelected, setProductSelected, handleEdit, titleEditRef } =
-    useContext(OrderContext);
+  const {
+    username,
+    productSelected,
+    setProductSelected,
+    handleEdit,
+    titleEditRef,
+  } = useContext(OrderContext);
 
   // comportements (gestionnaires d'événement ou "event handlers")
   const handleChange = (event) => {
@@ -18,7 +23,7 @@ export default function EditForm() {
     };
 
     setProductSelected(productBeingUpdated); // cette ligne update le formulaire
-    handleEdit(productBeingUpdated, event); // cette ligne update le menu
+    handleEdit(productBeingUpdated, username); // cette ligne update le menu
   };
 
   // affichage
