@@ -26,9 +26,20 @@ export const createUser = (userId) => {
   // NOURRITURE
   const nourriture = {
     username: userId,
-    menu: fakeMenu.LARGE,
+    menu: fakeMenu.SMALL,
   };
 
   //setDoc(CACHETTE, NOURRITURE)
   setDoc(docRef, nourriture);
+};
+
+export const authenticateUser = async (userId) => {
+  //1.  récupere un utilisateur existant
+
+  const existingUser = await getUser(userId);
+
+  //2. si non  créer un nouveau utilisateur
+  if (!existingUser) {
+    createUser(userId);
+  }
 };
