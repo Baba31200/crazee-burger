@@ -44,7 +44,7 @@ export default function OrderPage() {
   const intialiseBasket = () => {
     const basketReceived = getLocalStorage(username); // localStorage est synchrone, pas besoin de "await".
     console.log("basketReceived: ", basketReceived);
-    setBasket(basketReceived);
+    if (basketReceived) setBasket(basketReceived);
   };
 
   useEffect(() => {
