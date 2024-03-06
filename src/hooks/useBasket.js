@@ -42,16 +42,17 @@ export const useBasket = () => {
     setBasket,
     username
   ) => {
-    // we do not re-create a whole product, we only add the extra info a basket product has in comparaison to a menu product
+    // we do not re-create a whole product, we only add the extra info a basket product has in comparison to a menu product
     const newBasketProduct = { id: idProductToAdd, quantity: 1 };
     const newBasket = [newBasketProduct, ...basketCopy];
     setBasket(newBasket);
     setLocalStorage(username, newBasket);
   };
 
-  const handleDeleteBasketProduct = (idBasketProduct) => {
+  const handleDeleteBasketProduct = (idBasketProduct, username) => {
     const basketUpdated = removeObjectById(idBasketProduct, basket);
     setBasket(basketUpdated);
+    setLocalStorage(username, basketUpdated);
   };
 
   return { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct };
