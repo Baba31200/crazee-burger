@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { fakeBasket } from "../fakeData/fakeBasket";
 import {
   deepClone,
   findIndexById,
@@ -9,7 +8,7 @@ import {
 import { setLocalStorage } from "../utils/window";
 
 export const useBasket = () => {
-  const [basket, setBasket] = useState(fakeBasket.EMPTY);
+  const [basket, setBasket] = useState([]);
 
   const handleAddToBasket = (idProductToAdd, username) => {
     const basketCopy = deepClone(basket);
@@ -43,7 +42,7 @@ export const useBasket = () => {
     setBasket,
     username
   ) => {
-    // we do not re-create a whole product, we only add the extra info a basket product has in comparison to a menu product
+    // we do not re-create a whole product, we only add the extra info a basket product has in comparaison to a menu product
     const newBasketProduct = { id: idProductToAdd, quantity: 1 };
     const newBasket = [newBasketProduct, ...basketCopy];
     setBasket(newBasket);
@@ -55,5 +54,5 @@ export const useBasket = () => {
     setBasket(basketUpdated);
   };
 
-  return { basket, handleAddToBasket, handleDeleteBasketProduct };
+  return { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct };
 };

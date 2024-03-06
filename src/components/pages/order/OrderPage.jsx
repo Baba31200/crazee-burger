@@ -12,6 +12,7 @@ import { useBasket } from "../../../hooks/useBasket";
 import { findObjectById } from "../../../utils/array";
 import { useParams } from "react-router-dom";
 import { getMenu } from "../../../api/product";
+import { getLocalStorage } from "../../../utils/window";
 
 export default function OrderPage() {
   // state
@@ -23,7 +24,8 @@ export default function OrderPage() {
   const titleEditRef = useRef();
   const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } =
     useMenu();
-  const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket();
+  const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } =
+    useBasket();
   const { username } = useParams();
 
   const handleProductSelected = async (idProductClicked) => {
@@ -36,12 +38,21 @@ export default function OrderPage() {
 
   const intialiseMenu = async () => {
     const menuReceived = await getMenu(username);
-    console.log("menuReceived: ", menuReceived);
     setMenu(menuReceived);
+  };
+
+  const intialiseBasket = () => {
+    const basketReceived = getLocalStorage(username); // localStorage est synchrone, pas besoin de "await".
+    console.log("basketReceived: ", basketReceived);
+    setBasket(basketReceived);
   };
 
   useEffect(() => {
     intialiseMenu();
+  }, []);
+
+  useEffect(() => {
+    intialiseBasket();
   }, []);
 
   const orderContextValue = {
