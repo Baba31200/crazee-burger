@@ -10,7 +10,7 @@ import ImagePreview from "./ImagePreview";
 import { getInputTextsConfig } from "./inputTextsConfig";
 
 const Form = React.forwardRef(
-  ({ product, onSubmit, onChange, children }, ref) => {
+  ({ product, onSubmit, onChange, onFocus, onBlur, children }, ref) => {
     // state (vide)
 
     // comportements (vide)
@@ -28,6 +28,8 @@ const Form = React.forwardRef(
               key={input.id}
               onChange={onChange}
               version="minimalist"
+              onFocus={onFocus}
+              onBlur={onBlur}
               ref={ref && input.name === "title" ? ref : null}
             />
           ))}
