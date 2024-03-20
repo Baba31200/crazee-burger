@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BasketCard from "./BasketCard";
+
 import { IMAGE_COMING_SOON } from "../../../../../../enums/product";
 import OrderContext from "../../../../../../context/OrderContext";
 import { findObjectById } from "../../../../../../utils/array";
@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { checkIfProductIsClicked } from "../../MainRightSide/Menu/helper";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { basketAnimation } from "../../../../../../theme/animations";
+import BasketCard from "./BasketCard";
 
 export default function BasketProducts() {
   const {
