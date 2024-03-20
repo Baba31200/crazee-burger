@@ -35,7 +35,7 @@ export default function BasketProducts() {
             appear={true}
             classNames={"abricot"}
             key={basketProduct.id}
-            timeout={500}
+            timeout={300}
           >
             <div className="basket-card">
               <BasketCard
@@ -96,7 +96,7 @@ const BasketProductsStyled = styled.div`
   }
   .abricot-enter-active {
     .pomme {
-      transition: 0.5s;
+      transition: 300ms;
       transform: translateX(0px);
       opacity: 100%;
     }
@@ -112,7 +112,7 @@ const BasketProductsStyled = styled.div`
     .pomme {
       transform: translateX(-100px);
       opacity: 0%;
-      transition: 0.5s;
+      transition: 300ms;
     }
   }
 

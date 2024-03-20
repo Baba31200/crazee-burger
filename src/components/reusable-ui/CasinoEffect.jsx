@@ -17,7 +17,6 @@ export default function CasinoEffect({ count, className }) {
 }
 
 const CasinoEffectStyled = styled.div`
-  border: 1px solid red;
   position: relative;
   overflow-y: hidden;
 
@@ -40,7 +39,7 @@ const CasinoEffectStyled = styled.div`
   .count-animated-exit {
     transform: translateY(0%);
     position: absolute;
-    left: 0;
+    right: 0;
     bottom: 0;
   }
   .count-animated-exit-active {
