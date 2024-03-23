@@ -11,23 +11,24 @@ import { authenticateUser } from "../../../api/user";
 import Welcom from "./Welcom";
 
 function LoginForm() {
-  //state
-  const [username, setUsername] = useState("baba");
-
+  // state
+  const [username, setUsername] = useState("Bob");
   const navigate = useNavigate();
 
-  //comportement
+  // comportements
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    authenticateUser(username);
+    const userReceived = await authenticateUser(username);
+
     setUsername("");
-    navigate(`order/${username}`);
+    navigate(`order/${userReceived.username}`);
   };
 
   const handleChange = (event) => {
     setUsername(event.target.value);
   };
+
   //Affichage
   return (
     <LoginFormSyled action="submit" onSubmit={handleSubmit}>
