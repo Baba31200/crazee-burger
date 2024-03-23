@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { theme } from "../../../../../../../theme";
+import { fadeIn } from "../../../../../../../theme/animations";
 
-function ImagePreview({ imageSource, title }) {
+export default function ImagePreview({ imageSource, title }) {
   return (
     <ImagePreviewStyled>
       {imageSource ? (
@@ -13,12 +14,9 @@ function ImagePreview({ imageSource, title }) {
   );
 }
 
-export default ImagePreview;
-
 const ImagePreviewStyled = styled.div`
-  /* background: red; */
-  grid-area: 1/1/4/2;
-  display: float;
+  grid-area: 1 / 1 / 4 / 2;
+  display: flex;
   justify-content: center;
   align-items: center;
 
@@ -27,8 +25,11 @@ const ImagePreviewStyled = styled.div`
     height: 100px;
     object-fit: contain;
     object-position: center;
+    animation: ${fadeIn} 1s;
   }
+
   .empty-image {
+    /* background-color: green; */
     height: 100%;
     width: 100%;
     display: flex;
