@@ -1,4 +1,4 @@
-import Button from "../../../../../../reusable-ui/Button";
+import Button from "../../../../../../../reusable-ui/Button";
 
 import SubmitMessage from "./SubmitMessage";
 // eslint-disable-next-line react/prop-types

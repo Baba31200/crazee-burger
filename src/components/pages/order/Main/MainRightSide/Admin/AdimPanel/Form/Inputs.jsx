@@ -1,6 +1,6 @@
 import React from "react";
-import TextInput from "../../../../../../reusable-ui/TextInput";
-import SelectInput from "../../../../../../reusable-ui/SelectInput";
+import TextInput from "../../../../../../../reusable-ui/TextInput";
+import SelectInput from "../../../../../../../reusable-ui/SelectInput";
 import styled from "styled-components";
 import { getInputTextsConfig, getSelectInputConfig } from "./inputConfig";
 
