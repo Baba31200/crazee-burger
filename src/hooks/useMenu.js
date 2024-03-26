@@ -27,7 +27,7 @@ export const useMenu = () => {
     const menuUpdated = menuCopy.filter(
       (product) => product.id !== idOfProductToDelete
     );
-    console.log("menuUpdated: ", menuUpdated);
+    // console.log("menuUpdated: ", menuUpdated);
 
     //3. update du state
     setMenu(menuUpdated);
@@ -50,8 +50,8 @@ export const useMenu = () => {
   };
 
   const resetMenu = (username) => {
-    setMenu(fakeMenu.SMALL);
-    syncBothMenus(username, fakeMenu.SMALL);
+    setMenu(fakeMenu.LARGE);
+    syncBothMenus(username, fakeMenu.LARGE);
   };
 
   return { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu };

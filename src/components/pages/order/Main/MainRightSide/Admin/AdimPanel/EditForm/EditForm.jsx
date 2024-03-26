@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
-import OrderContext from "../../../../../../../context/OrderContext";
+import OrderContext from "../../../../../../../../context/OrderContext";
 import EditInfoMessage from "./EditInfoMessage";
-import Form from "./Form";
+import Form from "../Form/Form";
 import SavingMessage from "./SavingMessage";
-import { useSuccessMessage } from "../../../../../../../hooks/useSuccessMessage";
+import { useSuccessMessage } from "../../../../../../../../hooks/useSuccessMessage";
 
 export default function EditForm() {
   // state
@@ -39,7 +39,6 @@ export default function EditForm() {
   const handleOnBlur = (event) => {
     const valueOnBlur = event.target.value;
     if (valueOnFocus !== valueOnBlur) {
-      console.log("ça a changé !!");
       displaySuccessMessage();
     }
   };

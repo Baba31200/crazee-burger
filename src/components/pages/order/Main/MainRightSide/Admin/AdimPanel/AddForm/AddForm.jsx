@@ -1,15 +1,15 @@
 import { useContext } from "react";
 
-import OrderContext from "../../../../../../../context/OrderContext";
+import OrderContext from "../../../../../../../../context/OrderContext";
 
-import { EMPTY_PRODUCT } from "../../../../../../../enums/product";
+import { EMPTY_PRODUCT } from "../../../../../../../../enums/product";
 
-import Form from "./Form";
+import Form from "../Form/Form";
 
 import SubmitButton from "./SubmitButton";
 
-import { useSuccessMessage } from "../../../../../../../hooks/useSuccessMessage";
-import { replaceFrenchCommaWithDot } from "../../../../../../../utils/maths";
+import { useSuccessMessage } from "../../../../../../../../hooks/useSuccessMessage";
+import { replaceFrenchCommaWithDot } from "../../../../../../../../utils/maths";
 
 export default function AddForm() {
   // state

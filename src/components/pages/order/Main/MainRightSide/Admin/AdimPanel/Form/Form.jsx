@@ -2,38 +2,26 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import styled from "styled-components";
-
-import TextInput from "../../../../../../reusable-ui/TextInput";
-
 import ImagePreview from "./ImagePreview";
-
-import { getInputTextsConfig } from "./inputTextsConfig";
+import { Inputs } from "./Inputs";
 
 const Form = React.forwardRef(
-  ({ product, onSubmit, onChange, onFocus, onBlur, children }, ref) => {
+  ({ product, onSubmit, children, onChange, onFocus, onBlur }, ref) => {
     // state (vide)
 
     // comportements (vide)
-
-    const inputTexts = getInputTextsConfig(product);
 
     // affichage
     return (
       <FormStyled onSubmit={onSubmit}>
         <ImagePreview imageSource={product.imageSource} title={product.title} />
-        <div className="input-fields">
-          {inputTexts.map((input) => (
-            <TextInput
-              {...input}
-              key={input.id}
-              onChange={onChange}
-              version="minimalist"
-              onFocus={onFocus}
-              onBlur={onBlur}
-              ref={ref && input.name === "title" ? ref : null}
-            />
-          ))}
-        </div>
+        <Inputs
+          product={product}
+          onChange={onChange}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          ref={ref}
+        />
         <div className="form-footer">{children}</div>
       </FormStyled>
     );
@@ -51,14 +39,6 @@ const FormStyled = styled.form`
   width: 70%;
   grid-column-gap: 20px;
   grid-row-gap: 8px;
-
-  .input-fields {
-    /* background: blue; */
-    grid-area: 1 / 2 / -2 / 3;
-
-    display: grid;
-    grid-row-gap: 8px;
-  }
 
   .form-footer {
     /* background: green; */
